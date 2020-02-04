@@ -36,13 +36,13 @@
   register: sudoers_contents
   changed_when: false
 
-- name: Remove unmanaged /etc/sudoers.d/ files
-  file:
-    path: "/etc/sudoers.d/{{ item.path|basename }}"
-    state: absent
-  loop: "{{ sudoers_contents.files }}"
-  loop_control:
-    label: "{{ item.path }}"
-  when:
-    - (item.path|basename) not in roles
+# - name: Remove unmanaged /etc/sudoers.d/ files
+#   file:
+#     path: "/etc/sudoers.d/{{ item.path|basename }}"
+#     state: absent
+#   loop: "{{ sudoers_contents.files }}"
+#   loop_control:
+#     label: "{{ item.path }}"
+#   when:
+#     - (item.path|basename) not in roles
 ...
