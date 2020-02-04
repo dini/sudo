@@ -1,0 +1,4 @@
+---
+- include_tasks: main_tasks.yml
+  when: "'sudo' in roles"
+...
