@@ -1,8 +1,13 @@
 ---
+- name: Installing package
+  package:
+    name: sudo
+    state: present
+
 - name: Get sudo version
-  shell: sudo -V 2>&1 | egrep '^Sudo ' | sed -r 's/.* ([0-9]*\.[0-9]*\.[0-9]*).*/\1/g'
+  shell: set -o pipefail && sudo -V 2>&1 | egrep '^Sudo ' | sed -r 's/.* ([0-9]*\.[0-9]*\.[0-9]*).*/\1/g'
   args:
-    executable: /bin/sh
+    executable: /bin/bash
   changed_when: false
   register: sudo_version
   check_mode: no
